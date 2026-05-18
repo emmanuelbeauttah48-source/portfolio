@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emmanuel | Web Developer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2721/2721295.png" type="image/png" sizes="32x32">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg-dark: linear-gradient(270deg,#0f0c29,#302b63,#24243e,#1a2980,#26d0ce);
+  --bg-light: linear-gradient(270deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
+  --primary:#00f5ff;
+  --accent:#ff00c8;
+}
+
+body{
+  background:var(--bg-dark);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  transition:0.5s;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 20% 30%, rgba(255,0,200,0.15), transparent),
+             radial-gradient(circle at 80% 70%, rgba(0,255,255,0.15), transparent);
+  z-index:-1;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+body.light{
+  background:var(--bg-light);
+  background-size:400% 400%;
+  animation:gradientMove 15s ease infinite;
+  color:#111;
+}
+
+.navbar{
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 0 15px rgba(0,255,255,0.2);
+}
+.nav-link{color:#fff!important}
+.nav-link:hover{color:var(--primary)!important}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.hero h1{font-size:3.5rem;font-weight:bold}
+.hero span{color:var(--primary)}
+
+.hero-img{
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--primary);
+  box-shadow:0 0 30px rgba(0,255,255,0.6),0 0 60px rgba(255,0,200,0.3);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+}
+
+
+
+.btn-custom{
+  background:linear-gradient(45deg,var(--primary),var(--accent));
+  border:none;
+  border-radius:30px;
+  padding:12px 30px;
+  color:#fff;
+  box-shadow:0 0 15px rgba(0,255,255,0.5);
+}
+.btn-custom:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,0,200,0.6)}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 0 20px rgba(0,255,255,0.1);
+}
+.card:hover{transform:translateY(-12px) scale(1.03);box-shadow:0 0 30px rgba(0,255,255,0.4),0 0 60px rgba(255,0,200,0.2)}
+
+.project-img{
+  border-radius:15px;
+  height:200px;
+  object-fit:cover;
+}
+
+.pricing-card{
+  text-align:center;
+  padding:35px 25px;
+  position:relative;
+  overflow:hidden;
+}
+
+.pricing-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(45deg,transparent,rgba(0,255,255,0.15),transparent);
+  opacity:0;
+  transition:0.5s;
+}
+
+.pricing-card:hover::before{
+  opacity:1;
+}
+
+.price{
+  font-size:2.5rem;
+  font-weight:bold;
+  background:linear-gradient(45deg,#00f5ff,#ff00c8);
+
+  background-clip:text;             
+  -webkit-background-clip:text;     
+
+  color:transparent;                 
+  -webkit-text-fill-color:transparent;
+
+  display:inline-block;              
+}
+
+
+.pricing-card ul{
+  list-style:none;
+  padding:0;
+  margin:20px 0;
+}
+
+.pricing-card ul li{
+  margin:10px 0;
+  font-size:0.95rem;
+}
+
+
+.testimonial-card{
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px rgba(0,255,255,0.15);
+  position:relative;
+}
+
+.testimonial-card::before{
+  content:"C";
+  font-size:4rem;
+  position:absolute;
+  top:-10px;
+  left:15px;
+  color:var(--primary);
+}
+
+.client-img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-right:10px;
+}
+
+.footer{
+  position:relative;
+  background:linear-gradient(120deg,#141e30,#243b55,#0f2027);
+  padding:70px 0 30px;
+  overflow:hidden;
+}
+
+.footer::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(0,255,255,0.15), transparent 60%),
+             radial-gradient(circle, rgba(255,0,200,0.15), transparent 60%);
+  animation:rotateBg 20s linear infinite;
+}
+
+@keyframes rotateBg{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+
+.footer-content{
+  position:relative;
+  z-index:2;
+}
+
+.footer h5{
+  font-size:1.8rem;
+  background:linear-gradient(45deg,#00f5ff,#ff00c8);
+
+  background-clip:text;
+  -webkit-background-clip:text;
+
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+
+  display:inline-block;
+  position:relative;
+  z-index:2;
+}
+
+.footer-links a{
+  display:block;
+  color:#ccc;
+  margin:5px 0;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.footer-links a:hover{
+  color:#00f5ff;
+  transform:translateX(5px);
+}
+
+footer .qr-code{
+  width:130px;
+  height:130px;
+  border-radius:25px;
+  border:4px solid #00f5ff;
+  transition:0.3s;
+}
+footer .qr-code:hover{
+  border-color:#ff00c8;
+  transform:rotate(5deg) scale(1.05);
+}
+
+
+.footer-bottom{
+  margin-top:30px;
+  font-size:0.9rem;
+  color:#aaa;
+}
+
+.hidden{opacity:0;transform:translateY(60px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+.floating{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container">
+<a class="navbar-brand text-white" href="#">⚡ Emmanuel</a>
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#nav"></button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto align-items-center">
+<li><a class="nav-link" href="#home"><i class="fa fa-home"></i> Home</a></li>
+<li><a class="nav-link" href="#services"><i class="fa fa-code"></i> Services</a></li>
+<li><a class="nav-link" href="#projects"><i class="fa fa-briefcase"></i> Work</a></li>
+<li><a class="nav-link" href="#pricing"><i class="fa fa-tags"></i> Pricing</a></li>
+<li><a class="nav-link" href="#contact"><i class="fa fa-envelope"></i> Hire Me</a></li>
+<li><i class="fa fa-moon nav-link" id="toggleMode" style="cursor:pointer"></i></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section id="home" class="hero container">
+<div>
+<h1>Turning ideas into <span>Websites</span></h1>
+<h3 id="typing"></h3>
+<p>Web Developer crafting modern digital experiences.</p>
+<button class="btn-custom">View My Work</button>
+</div>
+<img src="Manu.jpeg" class="hero-img" alt="my image">
+</section>
+
+<section id="services" class="container py-5 hidden">
+<h2>Services</h2>
+<div class="row g-4">
+<div class="col-md-4"><div class="card p-4"><i class="fa fa-laptop fa-2x"></i><h5>Web Design</h5></div></div>
+<div class="col-md-4"><div class="card p-4"><i class="fa fa-mobile fa-2x"></i><h5>Responsive Design</h5></div></div>
+<div class="col-md-4"><div class="card p-4"><i class="fa fa-rocket fa-2x"></i><h5>Performance Optimization</h5></div></div>
+</div>
+</section>
+
+<section id="projects" class="container py-5 hidden">
+<h2>Projects</h2>
+<div class="row g-4">
+<div class="col-md-4"><div class="card p-3"><img src="School.png" class="project-img"><h5>Mombasa Baptist</h5></div></div>
+<div class="col-md-4"><div class="card p-3"><img src="Hotel.png" class="project-img"><h5>Red Bead Hotel</h5></div></div>
+<div class="col-md-4"><div class="card p-3"><img src="AgroFarm.png" class="project-img"><h5>AgroFarm Website</h5></div></div>
+<div class="col-md-4"><div class="card p-3"><img src="Pwani Data.png" class="project-img"><h5>Pwani Data Fibre</h5></div></div>
+</div>
+</section>
+
+<section id="pricing" class="container py-5 hidden">
+<h2>Pricing</h2>
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card pricing-card">
+<h4>Starter</h4>
+<p class="price">KES 15,000-20,000</p>
+<ul>
+<li>✔ 1-3 Pages</li>
+<li>✔ Mobile Responsive</li>
+<li>✔ Clean UI (Bootstrap)</li>
+<li>✔ 5-7 Days Delivery</li>
+</ul>
+<button class="btn-custom">Get Started</button>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card pricing-card" style="transform:scale(1.05);border:2px solid #00f5ff">
+<div class="badge-popular">POPULAR</div>
+<h4>Professional</h4>
+<p class="price">KES 20,000-25,000</p>
+<ul>
+<li>✔ 4-7 Pages Website</li>
+<li>✔ Better UI/Ux design</li>
+<li>✔ Animations Included</li>
+<li>✔ Google maps embed</li>
+<li>✔ Image Gallery</li>
+<li>✔ 5 Days Delivery</li>
+<li>✔ Contact form(PHP)</li>
+</ul>
+<button class="btn-custom">Choose Plan</button>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card pricing-card">
+<h4>Premium</h4>
+<p class="price">KES 25,000-35,000</p>
+<ul>
+<li>✔ Full Custom Website</li>
+<li>✔ Advanced Animations</li>
+<li>✔ Better UI polish</li>
+<li>✔ form handling with php</li>
+<li>✔ Priority Support</li>
+</ul>
+<button class="btn-custom">Go Premium</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="container py-5 hidden">
+<h2>What Clients Say</h2>
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="testimonial-card">
+<p>Working with Emmanuel was a great experience. He communicates clearly, meets deadlines, and always goes an extra mile to make sure everything looks perfect</p>
+<div class="d-flex align-items-center mt-3">
+<img src="Hamisi.jpeg" class="client-img">
+<strong>Hamisi Keah</strong>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonial-card">
+<p>Emmanuel redisigned our website and made it more user-friendly and visually appealing. Since the update, we've seen better engagement from visitors. I highly recommend his web development services.</p>
+<div class="d-flex align-items-center mt-3">
+<img src="annita.jpeg" class="client-img">
+<strong>Marylinn Mercy</strong>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="testimonial-card">
+<p>His ability to create clean and attractive designs is impressive. Emmanuel understands modern web trends and applies them perfectly to create stunning websites.</p>
+<div class="d-flex align-items-center mt-3">
+<img src="salome4.jpeg" class="client-img">
+<strong>Susan Daima</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="container py-5 hidden">
+<h2>Let's Work Together</h2>
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card p-4">
+<p class="mb-4">Have a project in mind? Let’s create something amazing that will make your business stand out.</p>
+<form id="contactForm">
+<input class="form-control mb-3" placeholder="Your Name" required>
+<input type="email" class="form-control mb-3" placeholder="Your Email" required>
+<textarea class="form-control mb-3" placeholder="Tell me about your project..." required></textarea>
+<button type="submit" class="btn-custom w-100">Start Project 🚀</button>
+</form>
+<div id="formMsg" class="mt-3" style="display:none;"></div>
+</div>
+</div>
+</div>
+</section>
+
+<a href="https://wa.me/[0748692664]" class="floating"><i class="fab fa-whatsapp"></i></a>
+
+<footer class="footer text-center">
+  <div class="container footer-content">
+    <h5>Let's Build Something Legendary 🚀</h5>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <h6>About Me</h6>
+        <p>Passionate web developer creating modern, responsive and high-performing websites that attract clients.</p>
+        <div class="contact-info">
+<p>Phone: 0748692664</p>
+<p>Email: emmanuelbeauttah48@gmail.com</p>
+</div>
+      </div>
+
+      <div class="col-md-4 footer-links">
+        <h6>Quick Links</h6>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Hire Me</a>
+      </div>
+
+      <div class="col-md-4">
+        <p>Scan my Instagram to connect:</p>
+<a href="https://www.instagram.com/v.a.p.o.u.r.k.i.n.g_254" id="instagramLink">
+<img class="qr-code" id="instagramQR" alt="Instagram QR Code">
+</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Emmanuel | Crafted with passion & creativity</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show')}})});
+document.querySelectorAll('.hidden').forEach(el=>observer.observe(el));
+
+const toggle=document.getElementById('toggleMode');
+toggle.onclick=()=>{document.body.classList.toggle('light')}
+
+const text="Modern | Responsive | Creative";
+let i=0;
+function typing(){
+ if(i<text.length){
+  document.getElementById('typing').innerHTML+=text.charAt(i);
+  i++;
+  setTimeout(typing,80);
+ }
+}
+typing();
+
+document.querySelector('.btn-custom').onclick=()=>{
+ document.querySelector('#projects').scrollIntoView({behavior:'smooth'})
+}
+
+const wa=document.querySelector('.floating');
+wa.href="https://wa.me/0748692664?text=Hello%20I%20want%20a%20website";
+
+const progress=document.createElement('div');
+progress.style.position='fixed';
+progress.style.top='0';
+progress.style.left='0';
+progress.style.height='4px';
+progress.style.background='linear-gradient(90deg,#00f5ff,#ff00c8)';
+progress.style.zIndex='9999';
+document.body.appendChild(progress);
+window.addEventListener('scroll',()=>{
+ let scroll=window.scrollY;
+ let height=document.body.scrollHeight-window.innerHeight;
+ progress.style.width=(scroll/height)*100+'%';
+});
+
+let lastScroll=0;
+window.addEventListener('scroll',()=>{
+ const nav=document.querySelector('.navbar');
+ if(window.scrollY>lastScroll){nav.style.top='-80px'}
+ else{nav.style.top='0'}
+ lastScroll=window.scrollY;
+});
+
+const glow=document.createElement('div');
+glow.style.position='fixed';
+glow.style.width='20px';
+glow.style.height='20px';
+glow.style.borderRadius='50%';
+glow.style.pointerEvents='none';
+glow.style.background='rgba(0,255,255,0.5)';
+glow.style.boxShadow='0 0 20px rgba(0,255,255,0.8)';
+document.body.appendChild(glow);
+
+document.addEventListener('mousemove',e=>{
+ glow.style.left=e.clientX+'px';
+ glow.style.top=e.clientY+'px';
+});
+
+const cards=document.querySelectorAll('.project-img');
+cards.forEach(img=>{
+ img.onclick=()=>{
+  const modal=document.createElement('div');
+  modal.style.position='fixed';
+  modal.style.inset='0';
+  modal.style.background='rgba(0,0,0,0.8)';
+  modal.style.display='flex';
+  modal.style.alignItems='center';
+  modal.style.justifyContent='center';
+  modal.innerHTML=`<img src="${img.src}" style="max-width:80%;border-radius:20px">`;
+  modal.onclick=()=>modal.remove();
+  document.body.appendChild(modal);
+ }
+});
+
+const stats=document.createElement('section');
+stats.className='container py-5 text-center';
+stats.innerHTML=`
+<h2>My Impact</h2>
+<div class="row">
+<div class="col"><h3 id="c1">0</h3><p>Projects</p></div>
+<div class="col"><h3 id="c2">0</h3><p>Clients</p></div>
+<div class="col"><h3 id="c3">0</h3><p>Hours Coding</p></div>
+</div>`;
+document.body.insertBefore(stats,document.querySelector('#pricing'));
+
+function animate(id,target){
+ let count=0;
+ let el=document.getElementById(id);
+ let int=setInterval(()=>{
+  count++;
+  el.innerText=count;
+  if(count>=target)clearInterval(int);
+ },20);
+}
+
+animate('c1',4);
+animate('c2',15);
+animate('c3',60);
+
+const contactForm = document.getElementById('contactForm');
+const formMsg = document.getElementById('formMsg');
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = contactForm[0].value.trim();
+  const email = contactForm[1].value.trim();
+  const message = contactForm[2].value.trim();
+
+  if(!name || !email || !message){
+    formMsg.style.display='block';
+    formMsg.innerHTML='<p style="color:#ff6b81">Please fill all fields!</p>';
+    return;
+  }
+
+  const mailtoLink = `mailto:youremail@example.com?subject=New Project from ${name}&body=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+  window.location.href = mailtoLink;
+
+  formMsg.style.display='block';
+  formMsg.innerHTML='<p style="color:#00ffab">Your message has been prepared. Check your email client to send it!</p>';
+  contactForm.reset();
+});
+
+const instagramUsername = 'v.a.p.o.u.r.k.i.n.g_254';
+const qr = document.getElementById('instagramQR');
+const link = document.getElementById('instagramLink');
+const webLink = `https://www.instagram.com/${instagramUsername}`;
+qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(webLink)}&format=png&bgcolor=FFFFFF&color=000000&margin=0`;
+link.href = webLink;
+</script>
+</body>
+</html>
